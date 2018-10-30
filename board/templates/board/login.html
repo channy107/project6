@@ -1,0 +1,33 @@
+<form method = "post">
+    {% csrf_token%}
+    ID : <input type="text" name="user_id">
+    <br>
+    이름 : <input type="text" name="user_name">
+    <br>
+    <input type="submit" value="로그인">
+    <!--<button type="submit">로그인</button>-->
+</form>
+
+<script src="http://code.jquery.com/jquery-3.1.1.min
+.js"></script>
+<script>
+    $('input:submit').click(function() {
+        $.ajax({
+            url: '/login',
+            type: 'post',
+            data: $('form').serialize(),
+            success: function(result){
+                alert(result)
+                if(result == '로그인 완료'){
+                    html = '<h3>누구님 반갑습니다.</h3>'
+                    $('form').after(html)
+                    $('form').remove()
+                } else {
+                    html = '<h3>다시로그인해주세요.</h3>'
+                    $('form').after(html)
+                }
+            }
+         })
+        return false //submit의 기본기능을 막기 위해서
+    })
+</script>

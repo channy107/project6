@@ -1,0 +1,14 @@
+<form method="post">
+    <input type="radio" name="target_lang" value="en">영어
+    <input type="radio" name="target_lang" value="jp">일본어
+    <input type="radio" name="target_lang" value="cn">중국어
+    <input type="radio" name="target_lang" value="vi">베트남어
+    <input type="radio" name="target_lang" value="id">인도네시아어
+    <br>
+    <textarea name="query"></textarea>
+
+    {%csrf_token%}
+    <input type="submit" value="번역">
+
+
+</form>
