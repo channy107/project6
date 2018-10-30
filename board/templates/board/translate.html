@@ -13,13 +13,19 @@
 <div style="border:2px solid red"></div>
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
-    $('input:submit').click(function(){
+    $('input:submit').click(function() {
         $.ajax({
             url:'/translate',
             type:'post',
             data: $('form').serialize(),
             success: function(res){
-                $('div').text(res)
+                res = JSON.parse(res)
+                content = ''
+                res = res['translated_text']
+                for(var i in res) {
+                    content += res[i][0] + '<br>'
+                }
+                $('div').html(content)
             }
      })
 
