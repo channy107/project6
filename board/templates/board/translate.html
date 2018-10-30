@@ -9,6 +9,21 @@
 
     {%csrf_token%}
     <input type="submit" value="번역">
-
-
 </form>
+<div style="border:2px solid red"></div>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    $('input:submit').click(function(){
+        $.ajax({
+            url:'/translate',
+            type:'post',
+            data: $('form').serialize(),
+            success: function(res){
+                $('div').text(res)
+            }
+     })
+
+     return false
+    })
+
+</script>
